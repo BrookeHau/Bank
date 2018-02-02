@@ -49,7 +49,7 @@ public class BankTest {
 	@Test
 	public void shouldAddCheckingInterest() {
 		BankAccount underTest = new BankAccount("12342", "Checking Account", 400.00);
-		underTest.checkingInterest(.01);
+		underTest.computeCheckingBalWithInterest(.01);
 		double check = underTest.getAccountBalance();
 		Assert.assertEquals(404.00, check, 0.01);
 	}
@@ -92,10 +92,14 @@ public class BankTest {
 
 	@Test
 	public void shouldAddAccount() {
+		//arrange
 		Bank underTest = new Bank();
+		
 		underTest.addBankAccount("1234", new BankAccount("1111", "Checking", 250.00));
 		underTest.addBankAccount("1356", new BankAccount("1111", "Checking", 250.00));
+		//act
 		int check = underTest.Banksize();
+		//assert
 		Assert.assertEquals(2, check);
 	}
 
@@ -108,4 +112,9 @@ public class BankTest {
 		int check = underTest.Banksize();
 		Assert.assertEquals(1, check);
 	}
+	
+//	@Test
+//	public void shouldReturnAccountNumber(){
+//		Bank underTest = new Bank()
+//	}
 }

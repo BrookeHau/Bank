@@ -2,10 +2,11 @@ import java.util.Map.Entry;
 
 public class BankAccount {
 
-	public String accountNum;
-	public String accountType;
+	private String accountNum;
+	private String accountType;
 	public double balance;
 	private String pin = "2345";
+	 
 
 	public BankAccount(String accountNum, String accountType, double balance) {
 		this.accountNum = accountNum;
@@ -27,13 +28,16 @@ public class BankAccount {
 
 	public void withdrawal(double withdrawalAmount) {
 		balance -= withdrawalAmount;
+		if(withdrawalAmount > balance){
+			System.out.println("You overdrew your account, your new balance is: " + balance);
+		}
 	}
 
 	public void deposit(double depositAmount) {
 		balance += depositAmount;
 	}
 
-	public void checkingInterest(double checkingInterest) {
+	public void computeCheckingBalWithInterest(double checkingInterest) {
 		balance = (balance * (1 + checkingInterest));
 
 	}
